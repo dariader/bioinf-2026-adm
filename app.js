@@ -121,6 +121,18 @@ function initCityMap() {
   }).addTo(cityMap);
 
   cityLayer = L.layerGroup().addTo(cityMap);
+
+  // Leaflet needs to recalculate the viewport after responsive layout/zoom changes.
+  if (window.ResizeObserver) {
+    const mapEl = document.getElementById('cityMap');
+    const ro = new ResizeObserver(() => {
+      if (cityMap) window.requestAnimationFrame(() => cityMap.invalidateSize(false));
+    });
+    ro.observe(mapEl);
+  }
+  window.addEventListener('resize', () => {
+    if (cityMap) window.requestAnimationFrame(() => cityMap.invalidateSize(false));
+  }, { passive: true });
 }
 
 function renderCityMap(points) {
