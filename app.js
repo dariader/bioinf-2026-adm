@@ -11,7 +11,6 @@ const charts = {};
 let DATA = null;
 let cityMap = null;
 let cityLayer = null;
-let currentTestVariant = 'all';
 
 Chart.defaults.font.family = 'Open Sans, Arial, sans-serif';
 Chart.defaults.color = '#596174';
@@ -44,9 +43,9 @@ function barChart(name, canvasId, series, opts = {}) {
       datasets: [{
         data: values(series),
         backgroundColor: opts.color || COLORS.blue,
-        borderRadius: 6,
+        borderRadius: 5,
         borderSkipped: false,
-        maxBarThickness: opts.maxBarThickness || 34
+        maxBarThickness: opts.maxBarThickness || 32
       }]
     },
     options: {
@@ -58,62 +57,54 @@ function barChart(name, canvasId, series, opts = {}) {
         tooltip: { callbacks: { label: tooltipCountPercent } }
       },
       scales: opts.horizontal === false ? {
-        x: { grid: { display: false }, ticks: { autoSkip: false, font: { size: 11 } } },
-        y: { beginAtZero: true, grid: { color: '#EEF1F5' }, ticks: { precision: 0 } }
+        x: { grid: { display: false }, ticks: { autoSkip: false, font: { size: opts.tickSize || 10 } } },
+        y: { beginAtZero: true, grid: { color: '#EEF1F5' }, ticks: { precision: 0, font: { size: 10 } } }
       } : {
-        x: { beginAtZero: true, grid: { color: '#EEF1F5' }, ticks: { precision: 0 } },
-        y: { grid: { display: false }, ticks: { autoSkip: false, font: { size: 11 } } }
+        x: { beginAtZero: true, grid: { color: '#EEF1F5' }, ticks: { precision: 0, font: { size: 10 } } },
+        y: { grid: { display: false }, ticks: { autoSkip: false, font: { size: opts.tickSize || 10 } } }
       }
     }
   });
 }
 
-function doughnutChart(name, canvasId, series, colors = [COLORS.blue, COLORS.darkBlue, COLORS.muted, COLORS.pale]) {
+function doughnutChart(name, canvasId, series, colors = [COLORS.blue, COLORS.darkBlue]) {
   destroy(name);
   const ctx = document.getElementById(canvasId);
   charts[name] = new Chart(ctx, {
     type: 'doughnut',
-    data: { labels: labels(series), datasets: [{ data: values(series), backgroundColor: colors, borderWidth: 0, hoverOffset: 6 }] },
+    data: { labels: labels(series), datasets: [{ data: values(series), backgroundColor: colors, borderWidth: 0, hoverOffset: 5 }] },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      cutout: '62%',
+      cutout: '64%',
       plugins: {
-        legend: { position: 'bottom', labels: { usePointStyle: true, pointStyle: 'circle', padding: 16, boxWidth: 8 } },
+        legend: { position: 'bottom', labels: { usePointStyle: true, pointStyle: 'circle', padding: 10, boxWidth: 7, font: { size: 9 } } },
         tooltip: { callbacks: { label: tooltipCountPercent } }
       }
     }
   });
 }
 
-function renderFunnel() {
-  destroy('funnel');
+function renderStages() {
+  const holder = document.getElementById('stageFlow');
   const series = DATA.funnel;
-  charts.funnel = new Chart(document.getElementById('funnelChart'), {
-    type: 'bar',
-    data: {
-      labels: labels(series),
-      datasets: [{
-        data: values(series),
-        backgroundColor: [COLORS.darkBlue, '#3569A8', COLORS.blue, '#76A9EE', '#A6C8F6'],
-        borderRadius: 8,
-        borderSkipped: false,
-        maxBarThickness: 58
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: { callbacks: { label: ctx => `${formatNumber(ctx.raw)} чел.` } }
-      },
-      scales: {
-        x: { grid: { display: false }, ticks: { maxRotation: 0, minRotation: 0, font: { size: 11 } } },
-        y: { beginAtZero: true, grid: { color: '#EEF1F5' }, ticks: { precision: 0 } }
-      }
+  const parts = [];
+  series.forEach((item, index) => {
+    parts.push(`
+      <div class="stage-card">
+        <strong>${formatNumber(item.value)}</strong>
+        <span>${item.label}</span>
+      </div>`);
+    if (index < series.length - 1) {
+      const next = series[index + 1];
+      const pct = item.value ? (next.value / item.value * 100) : 0;
+      parts.push(`
+        <div class="stage-link" aria-label="${formatDecimal(pct)} процента переходят к следующему этапу">
+          <b>${formatDecimal(pct)}%</b><i></i>
+        </div>`);
     }
   });
+  holder.innerHTML = parts.join('');
 }
 
 function initCityMap() {
@@ -122,7 +113,7 @@ function initCityMap() {
     scrollWheelZoom: false,
     minZoom: 1,
     worldCopyJump: true
-  }).setView([47, 46], 2);
+  }).setView([49, 47], 2);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
@@ -138,13 +129,13 @@ function renderCityMap(points) {
   const bounds = [];
 
   points.forEach(p => {
-    const radius = Math.min(42, 4 + Math.sqrt(p.count) * 2.5);
+    const radius = Math.min(32, 4 + Math.sqrt(p.count) * 2.2);
     const marker = L.circleMarker([p.lat, p.lng], {
       radius,
       color: '#FFFFFF',
-      weight: 1.5,
+      weight: 1.4,
       fillColor: COLORS.blue,
-      fillOpacity: .72
+      fillOpacity: .74
     });
     marker.bindTooltip(`<strong>${p.city}</strong><br>${formatNumber(p.count)} чел.`, {
       direction: 'top',
@@ -155,7 +146,7 @@ function renderCityMap(points) {
   });
 
   if (bounds.length > 1) {
-    cityMap.fitBounds(bounds, { padding: [26, 26], maxZoom: 4 });
+    cityMap.fitBounds(bounds, { padding: [24, 24], maxZoom: 4 });
   } else if (bounds.length === 1) {
     cityMap.setView(bounds[0], 5);
   }
@@ -164,7 +155,9 @@ function renderCityMap(points) {
 
 function subtractSeries(allSeries, subsetSeries) {
   const subset = new Map(subsetSeries.map(d => [d.label, Number(d.value)]));
-  return allSeries.map(d => ({ label: d.label, value: Math.max(0, Number(d.value) - (subset.get(d.label) || 0)) })).filter(d => d.value > 0);
+  return allSeries
+    .map(d => ({ label: d.label, value: Math.max(0, Number(d.value) - (subset.get(d.label) || 0)) }))
+    .filter(d => d.value > 0);
 }
 
 function notAllowedCohort() {
@@ -186,13 +179,13 @@ function renderCohort(key) {
   const c = key === 'not_allowed' ? notAllowedCohort() : DATA.cohorts[key];
   document.getElementById('cohortN').textContent = formatNumber(c.n);
   renderCityMap(c.city_points);
-  barChart('study', 'studyChart', c.study_status, { color: COLORS.darkBlue, maxBarThickness: 30 });
-  barChart('grad', 'gradChart', c.grad_group, { horizontal: false, color: COLORS.blue, maxBarThickness: 42 });
   doughnutChart('prior', 'priorChart', c.prior, [COLORS.blue, COLORS.darkBlue]);
+  barChart('study', 'studyChart', c.study_status, { color: COLORS.darkBlue, maxBarThickness: 25, tickSize: 8.5 });
+  barChart('grad', 'gradChart', c.grad_group, { horizontal: false, color: COLORS.blue, maxBarThickness: 30, tickSize: 8.5 });
 }
 
 function renderCourseChart() {
-  barChart('course', 'courseChart', DATA.overall.course_score, { horizontal: false, color: COLORS.darkBlue, maxBarThickness: 54 });
+  barChart('course', 'courseChart', DATA.overall.course_score, { horizontal: false, color: COLORS.darkBlue, maxBarThickness: 50, tickSize: 10 });
 }
 
 function blockShortLabel(label) {
@@ -201,21 +194,44 @@ function blockShortLabel(label) {
   return label;
 }
 
+const valueLabelsPlugin = {
+  id: 'valueLabels',
+  afterDatasetsDraw(chart) {
+    const { ctx, chartArea } = chart;
+    ctx.save();
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillStyle = '#596174';
+    ctx.font = '600 10px Open Sans, Arial, sans-serif';
+    chart.data.datasets.forEach((dataset, datasetIndex) => {
+      const meta = chart.getDatasetMeta(datasetIndex);
+      meta.data.forEach((bar, i) => {
+        const value = Number(dataset.data[i]);
+        const y = Math.max(bar.y - 6, chartArea.top + 11);
+        ctx.fillText(`${formatDecimal(value)}%`, bar.x, y);
+      });
+    });
+    ctx.restore();
+  }
+};
+
 function renderBlockComparison(key) {
   destroy('blocks');
   const labelsOrder = DATA.testing.all.blocks.map(b => b.label);
   let datasets;
 
   if (key === 'all') {
-    const byVariant = ['v1', 'v2'].map(v => DATA.testing[v]);
-    datasets = byVariant.map((stat, index) => ({
-      label: stat.title,
-      data: labelsOrder.map(lbl => stat.blocks.find(b => b.label === lbl).median_pct),
-      backgroundColor: index === 0 ? COLORS.darkBlue : COLORS.blue,
-      borderRadius: 6,
-      borderSkipped: false,
-      maxBarThickness: 34
-    }));
+    datasets = ['v1', 'v2'].map((v, index) => {
+      const stat = DATA.testing[v];
+      return {
+        label: stat.title,
+        data: labelsOrder.map(lbl => stat.blocks.find(b => b.label === lbl).median_pct),
+        backgroundColor: index === 0 ? COLORS.darkBlue : COLORS.blue,
+        borderRadius: 6,
+        borderSkipped: false,
+        maxBarThickness: 30
+      };
+    });
   } else {
     const stat = DATA.testing[key];
     datasets = [{
@@ -224,23 +240,25 @@ function renderBlockComparison(key) {
       backgroundColor: key === 'v1' ? COLORS.darkBlue : COLORS.blue,
       borderRadius: 6,
       borderSkipped: false,
-      maxBarThickness: 48
+      maxBarThickness: 44
     }];
   }
 
   charts.blocks = new Chart(document.getElementById('blockChart'), {
     type: 'bar',
     data: { labels: labelsOrder.map(blockShortLabel), datasets },
+    plugins: [valueLabelsPlugin],
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      layout: { padding: { top: 18 } },
       plugins: {
-        legend: { display: key === 'all', position: 'bottom', labels: { usePointStyle: true, pointStyle: 'circle', boxWidth: 8 } },
+        legend: { display: key === 'all', position: 'bottom', labels: { usePointStyle: true, pointStyle: 'circle', boxWidth: 7, font: { size: 10 } } },
         tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${formatDecimal(ctx.raw)}%` } }
       },
       scales: {
-        x: { grid: { display: false }, ticks: { font: { size: 10 } } },
-        y: { beginAtZero: true, max: 100, grid: { color: '#EEF1F5' }, ticks: { callback: v => `${v}%` } }
+        x: { grid: { display: false }, ticks: { font: { size: 9.5 } } },
+        y: { beginAtZero: true, max: 100, grid: { color: '#EEF1F5' }, ticks: { callback: v => `${v}%`, font: { size: 9.5 } } }
       }
     }
   });
@@ -266,27 +284,14 @@ function renderTestDistribution(stat, key) {
       maintainAspectRatio: false,
       plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => `${formatNumber(ctx.raw)} чел.` } } },
       scales: {
-        x: { grid: { display: false }, ticks: { autoSkip: true, maxTicksLimit: 12, font: { size: 10 } }, title: { display: true, text: 'Общий балл', font: { size: 11, weight: '600' } } },
-        y: { beginAtZero: true, grid: { color: '#EEF1F5' }, ticks: { precision: 0 }, title: { display: true, text: 'Число участников', font: { size: 11, weight: '600' } } }
+        x: { grid: { display: false }, ticks: { autoSkip: true, maxTicksLimit: 12, font: { size: 9.5 } }, title: { display: true, text: 'Общий балл', font: { size: 10, weight: '600' } } },
+        y: { beginAtZero: true, grid: { color: '#EEF1F5' }, ticks: { precision: 0, font: { size: 9.5 } }, title: { display: true, text: 'Число участников', font: { size: 10, weight: '600' } } }
       }
     }
   });
 }
 
-function renderBlockMetrics(stat) {
-  const holder = document.getElementById('blockMetrics');
-  holder.innerHTML = stat.blocks.map(b => {
-    const displayLabel = b.label.startsWith('Молекулярная') ? 'Молекулярная биология' : b.label;
-    return `
-    <div class="block-metric">
-      <strong>${formatDecimal(b.median_pct)}%</strong>
-      <span>${displayLabel}</span>
-    </div>`;
-  }).join('');
-}
-
 function renderTesting(key) {
-  currentTestVariant = key;
   const stat = DATA.testing[key];
   document.getElementById('testVariantN').textContent = formatNumber(stat.n);
   document.getElementById('testMean').textContent = formatDecimal(stat.mean_total);
@@ -294,7 +299,6 @@ function renderTesting(key) {
   document.getElementById('testVariantCaption').textContent = key === 'all' ? 'Все варианты' : `${stat.title} · ${stat.date}`;
   renderTestDistribution(stat, key);
   renderBlockComparison(key);
-  renderBlockMetrics(stat);
   document.querySelectorAll('.segment').forEach(btn => btn.classList.toggle('active', btn.dataset.variant === key));
 }
 
@@ -316,8 +320,6 @@ function renderKpis() {
   document.getElementById('kpiTests').textContent = formatNumber(k.test_completed_unique);
   document.getElementById('kpiAllowed').textContent = formatNumber(k.interview_allowed_unique);
   document.getElementById('courseN').textContent = formatNumber(k.course_scores_available);
-  const prepared = DATA.meta.generated.split('-').reverse().join('.');
-  document.getElementById('dataStamp').textContent = `Данные на ${prepared}`;
 }
 
 async function init() {
@@ -327,7 +329,7 @@ async function init() {
     DATA = await response.json();
 
     renderKpis();
-    renderFunnel();
+    renderStages();
     renderCourseChart();
     renderCohort('all');
     renderTesting('all');
@@ -336,7 +338,6 @@ async function init() {
     document.querySelectorAll('.segment').forEach(btn => btn.addEventListener('click', () => renderTesting(btn.dataset.variant)));
   } catch (error) {
     console.error(error);
-    document.getElementById('dataStamp').textContent = 'Не удалось загрузить data/admissions.json';
   }
 }
 
