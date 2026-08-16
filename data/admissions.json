@@ -1,0 +1,1002 @@
+{
+  "meta": {
+    "title": "Статистика приёма 2026/27",
+    "organization": "Институт биоинформатики",
+    "generated": "2026-08-16",
+    "source_file": "",
+    "privacy": ""
+  },
+  "brand": {
+    "blue": "#3A81E8",
+    "dark_blue": "#2D528A",
+    "gray": "#3C3C50",
+    "white": "#FFFFFF",
+    "smoke": "#F5F5F5",
+    "font": "Open Sans"
+  },
+  "kpis": {
+    "applications_unique": 299,
+    "application_rows": 301,
+    "test_registered_unique": 298,
+    "test_completed_unique": 216,
+    "course_scores_available": 280,
+    "interview_allowed_unique": 129,
+    "interviewed_unique": 121,
+    "accepted": 59,
+    "rejected": 62,
+    "acceptance_from_applications_pct": 19.7
+  },
+  "funnel": [
+    {
+      "label": "Уникальные анкеты",
+      "value": 299
+    },
+    {
+      "label": "Зарегистрированы на тест",
+      "value": 298
+    },
+    {
+      "label": "Есть результат теста",
+      "value": 216
+    },
+    {
+      "label": "Допущены до собеседования",
+      "value": 129
+    },
+    {
+      "label": "Прошли собеседование",
+      "value": 121
+    },
+    {
+      "label": "Приняты",
+      "value": 59
+    }
+  ],
+  "overall": {
+    "test_score": [
+      {
+        "label": "25–29",
+        "value": 67
+      },
+      {
+        "label": "20–24",
+        "value": 56
+      },
+      {
+        "label": "15–19",
+        "value": 30
+      },
+      {
+        "label": "10–14",
+        "value": 21
+      },
+      {
+        "label": "30–34",
+        "value": 19
+      },
+      {
+        "label": "0–4",
+        "value": 15
+      },
+      {
+        "label": "5–9",
+        "value": 8
+      }
+    ],
+    "course_score": [
+      {
+        "label": "170–184",
+        "value": 147
+      },
+      {
+        "label": "185–200",
+        "value": 57
+      },
+      {
+        "label": "0–49",
+        "value": 51
+      },
+      {
+        "label": "50–99",
+        "value": 14
+      },
+      {
+        "label": "130–149",
+        "value": 7
+      },
+      {
+        "label": "100–129",
+        "value": 3
+      },
+      {
+        "label": "150–169",
+        "value": 1
+      }
+    ],
+    "interview_score": [
+      {
+        "label": "0–0,49",
+        "value": 27
+      },
+      {
+        "label": "1–1,49",
+        "value": 26
+      },
+      {
+        "label": "0,5–0,99",
+        "value": 25
+      },
+      {
+        "label": "−1–0",
+        "value": 15
+      },
+      {
+        "label": "1,5–2",
+        "value": 14
+      },
+      {
+        "label": "< −1",
+        "value": 8
+      }
+    ],
+    "grant_interviewed": [
+      {
+        "label": "Да",
+        "value": 72
+      },
+      {
+        "label": "Нет",
+        "value": 49
+      }
+    ],
+    "decision": [
+      {
+        "label": "Нет",
+        "value": 62
+      },
+      {
+        "label": "Да",
+        "value": 59
+      }
+    ],
+    "test_variant": {
+      "Вариант 1": 57,
+      "Вариант 2": 160
+    }
+  },
+  "cohorts": {
+    "all": {
+      "n": 299,
+      "city": [
+        {
+          "label": "Москва",
+          "value": 109
+        },
+        {
+          "label": "Санкт-Петербург",
+          "value": 78
+        },
+        {
+          "label": "Другие",
+          "value": 73
+        },
+        {
+          "label": "Новосибирск",
+          "value": 9
+        },
+        {
+          "label": "Владивосток",
+          "value": 7
+        },
+        {
+          "label": "Нижний Новгород",
+          "value": 6
+        },
+        {
+          "label": "Казань",
+          "value": 5
+        },
+        {
+          "label": "Ташкент",
+          "value": 3
+        },
+        {
+          "label": "Иркутск",
+          "value": 3
+        },
+        {
+          "label": "Минск",
+          "value": 3
+        },
+        {
+          "label": "Дрезден",
+          "value": 3
+        }
+      ],
+      "study_status": [
+        {
+          "label": "выпускник",
+          "value": 151
+        },
+        {
+          "label": "аспирант очной формы",
+          "value": 50
+        },
+        {
+          "label": "студент-магистрант очной формы",
+          "value": 45
+        },
+        {
+          "label": "студент-бакалавр очной формы",
+          "value": 31
+        },
+        {
+          "label": "студент-специалист очной формы",
+          "value": 14
+        },
+        {
+          "label": "студент ординатуры/интернатуры",
+          "value": 5
+        },
+        {
+          "label": "студент заочной формы",
+          "value": 3
+        }
+      ],
+      "grad_group": [
+        {
+          "label": "2019 и ранее",
+          "value": 70
+        },
+        {
+          "label": "2026",
+          "value": 54
+        },
+        {
+          "label": "2020–2023",
+          "value": 51
+        },
+        {
+          "label": "2027",
+          "value": 46
+        },
+        {
+          "label": "2028 и позже",
+          "value": 40
+        },
+        {
+          "label": "2024–2025",
+          "value": 38
+        }
+      ],
+      "prior": [
+        {
+          "label": "Нет",
+          "value": 197
+        },
+        {
+          "label": "Да",
+          "value": 102
+        }
+      ],
+      "test_date": [
+        {
+          "label": "29 марта, воскресенье, 13:00 МСК",
+          "value": 239
+        },
+        {
+          "label": "26 марта, четверг, 20:00 МСК",
+          "value": 60
+        }
+      ],
+      "course_score": [
+        {
+          "label": "170–184",
+          "value": 147
+        },
+        {
+          "label": "185–200",
+          "value": 57
+        },
+        {
+          "label": "0–49",
+          "value": 51
+        },
+        {
+          "label": "50–99",
+          "value": 14
+        },
+        {
+          "label": "130–149",
+          "value": 7
+        },
+        {
+          "label": "100–129",
+          "value": 3
+        },
+        {
+          "label": "150–169",
+          "value": 1
+        }
+      ],
+      "test_score": [
+        {
+          "label": "25–29",
+          "value": 66
+        },
+        {
+          "label": "20–24",
+          "value": 52
+        },
+        {
+          "label": "15–19",
+          "value": 28
+        },
+        {
+          "label": "10–14",
+          "value": 20
+        },
+        {
+          "label": "30–34",
+          "value": 17
+        },
+        {
+          "label": "5–9",
+          "value": 8
+        },
+        {
+          "label": "0–4",
+          "value": 7
+        }
+      ],
+      "interview_score": [
+        {
+          "label": "0–0,49",
+          "value": 27
+        },
+        {
+          "label": "1–1,49",
+          "value": 26
+        },
+        {
+          "label": "0,5–0,99",
+          "value": 25
+        },
+        {
+          "label": "−1–0",
+          "value": 15
+        },
+        {
+          "label": "1,5–2",
+          "value": 13
+        },
+        {
+          "label": "< −1",
+          "value": 8
+        }
+      ],
+      "grant": [
+        {
+          "label": "Да",
+          "value": 71
+        },
+        {
+          "label": "Нет",
+          "value": 49
+        }
+      ]
+    },
+    "allowed": {
+      "n": 129,
+      "city": [
+        {
+          "label": "Москва",
+          "value": 55
+        },
+        {
+          "label": "Санкт-Петербург",
+          "value": 35
+        },
+        {
+          "label": "Другие",
+          "value": 29
+        },
+        {
+          "label": "Нижний Новгород",
+          "value": 4
+        },
+        {
+          "label": "Владивосток",
+          "value": 3
+        },
+        {
+          "label": "Новосибирск",
+          "value": 3
+        }
+      ],
+      "study_status": [
+        {
+          "label": "выпускник",
+          "value": 47
+        },
+        {
+          "label": "студент-магистрант очной формы",
+          "value": 30
+        },
+        {
+          "label": "аспирант очной формы",
+          "value": 25
+        },
+        {
+          "label": "студент-бакалавр очной формы",
+          "value": 17
+        },
+        {
+          "label": "студент-специалист очной формы",
+          "value": 7
+        },
+        {
+          "label": "студент ординатуры/интернатуры",
+          "value": 3
+        }
+      ],
+      "grad_group": [
+        {
+          "label": "2026",
+          "value": 31
+        },
+        {
+          "label": "2028 и позже",
+          "value": 26
+        },
+        {
+          "label": "2027",
+          "value": 22
+        },
+        {
+          "label": "2024–2025",
+          "value": 18
+        },
+        {
+          "label": "2019 и ранее",
+          "value": 18
+        },
+        {
+          "label": "2020–2023",
+          "value": 14
+        }
+      ],
+      "prior": [
+        {
+          "label": "Нет",
+          "value": 83
+        },
+        {
+          "label": "Да",
+          "value": 46
+        }
+      ],
+      "test_date": [
+        {
+          "label": "29 марта, воскресенье, 13:00 МСК",
+          "value": 109
+        },
+        {
+          "label": "26 марта, четверг, 20:00 МСК",
+          "value": 20
+        }
+      ],
+      "course_score": [
+        {
+          "label": "170–184",
+          "value": 93
+        },
+        {
+          "label": "185–200",
+          "value": 36
+        }
+      ],
+      "test_score": [
+        {
+          "label": "25–29",
+          "value": 66
+        },
+        {
+          "label": "20–24",
+          "value": 45
+        },
+        {
+          "label": "30–34",
+          "value": 17
+        }
+      ],
+      "interview_score": [
+        {
+          "label": "0–0,49",
+          "value": 27
+        },
+        {
+          "label": "1–1,49",
+          "value": 26
+        },
+        {
+          "label": "0,5–0,99",
+          "value": 25
+        },
+        {
+          "label": "−1–0",
+          "value": 15
+        },
+        {
+          "label": "1,5–2",
+          "value": 13
+        },
+        {
+          "label": "< −1",
+          "value": 8
+        }
+      ],
+      "grant": [
+        {
+          "label": "Да",
+          "value": 71
+        },
+        {
+          "label": "Нет",
+          "value": 49
+        }
+      ]
+    },
+    "interviewed": {
+      "n": 120,
+      "city": [
+        {
+          "label": "Москва",
+          "value": 53
+        },
+        {
+          "label": "Санкт-Петербург",
+          "value": 32
+        },
+        {
+          "label": "Другие",
+          "value": 25
+        },
+        {
+          "label": "Нижний Новгород",
+          "value": 4
+        },
+        {
+          "label": "Владивосток",
+          "value": 3
+        },
+        {
+          "label": "Новосибирск",
+          "value": 3
+        }
+      ],
+      "study_status": [
+        {
+          "label": "выпускник",
+          "value": 44
+        },
+        {
+          "label": "студент-магистрант очной формы",
+          "value": 28
+        },
+        {
+          "label": "аспирант очной формы",
+          "value": 23
+        },
+        {
+          "label": "студент-бакалавр очной формы",
+          "value": 16
+        },
+        {
+          "label": "студент-специалист очной формы",
+          "value": 6
+        },
+        {
+          "label": "студент ординатуры/интернатуры",
+          "value": 3
+        }
+      ],
+      "grad_group": [
+        {
+          "label": "2026",
+          "value": 30
+        },
+        {
+          "label": "2028 и позже",
+          "value": 24
+        },
+        {
+          "label": "2027",
+          "value": 19
+        },
+        {
+          "label": "2024–2025",
+          "value": 17
+        },
+        {
+          "label": "2019 и ранее",
+          "value": 17
+        },
+        {
+          "label": "2020–2023",
+          "value": 13
+        }
+      ],
+      "prior": [
+        {
+          "label": "Нет",
+          "value": 76
+        },
+        {
+          "label": "Да",
+          "value": 44
+        }
+      ],
+      "test_date": [
+        {
+          "label": "29 марта, воскресенье, 13:00 МСК",
+          "value": 102
+        },
+        {
+          "label": "26 марта, четверг, 20:00 МСК",
+          "value": 18
+        }
+      ],
+      "course_score": [
+        {
+          "label": "170–184",
+          "value": 87
+        },
+        {
+          "label": "185–200",
+          "value": 33
+        }
+      ],
+      "test_score": [
+        {
+          "label": "25–29",
+          "value": 64
+        },
+        {
+          "label": "20–24",
+          "value": 40
+        },
+        {
+          "label": "30–34",
+          "value": 16
+        }
+      ],
+      "interview_score": [
+        {
+          "label": "0–0,49",
+          "value": 27
+        },
+        {
+          "label": "1–1,49",
+          "value": 26
+        },
+        {
+          "label": "0,5–0,99",
+          "value": 25
+        },
+        {
+          "label": "−1–0",
+          "value": 15
+        },
+        {
+          "label": "1,5–2",
+          "value": 13
+        },
+        {
+          "label": "< −1",
+          "value": 8
+        }
+      ],
+      "grant": [
+        {
+          "label": "Да",
+          "value": 71
+        },
+        {
+          "label": "Нет",
+          "value": 49
+        }
+      ]
+    },
+    "accepted": {
+      "n": 58,
+      "city": [
+        {
+          "label": "Москва",
+          "value": 28
+        },
+        {
+          "label": "Другие",
+          "value": 16
+        },
+        {
+          "label": "Санкт-Петербург",
+          "value": 14
+        }
+      ],
+      "study_status": [
+        {
+          "label": "выпускник",
+          "value": 29
+        },
+        {
+          "label": "студент-магистрант очной формы",
+          "value": 13
+        },
+        {
+          "label": "студент-бакалавр очной формы",
+          "value": 7
+        },
+        {
+          "label": "аспирант очной формы",
+          "value": 6
+        },
+        {
+          "label": "студент-специалист очной формы",
+          "value": 3
+        }
+      ],
+      "grad_group": [
+        {
+          "label": "2026",
+          "value": 14
+        },
+        {
+          "label": "2024–2025",
+          "value": 11
+        },
+        {
+          "label": "2019 и ранее",
+          "value": 10
+        },
+        {
+          "label": "2020–2023",
+          "value": 8
+        },
+        {
+          "label": "2028 и позже",
+          "value": 8
+        },
+        {
+          "label": "2027",
+          "value": 7
+        }
+      ],
+      "prior": [
+        {
+          "label": "Нет",
+          "value": 36
+        },
+        {
+          "label": "Да",
+          "value": 22
+        }
+      ],
+      "test_date": [
+        {
+          "label": "29 марта, воскресенье, 13:00 МСК",
+          "value": 53
+        },
+        {
+          "label": "26 марта, четверг, 20:00 МСК",
+          "value": 5
+        }
+      ],
+      "course_score": [
+        {
+          "label": "170–184",
+          "value": 40
+        },
+        {
+          "label": "185–200",
+          "value": 18
+        }
+      ],
+      "test_score": [
+        {
+          "label": "25–29",
+          "value": 27
+        },
+        {
+          "label": "20–24",
+          "value": 22
+        },
+        {
+          "label": "30–34",
+          "value": 9
+        }
+      ],
+      "interview_score": [
+        {
+          "label": "1–1,49",
+          "value": 25
+        },
+        {
+          "label": "0,5–0,99",
+          "value": 17
+        },
+        {
+          "label": "1,5–2",
+          "value": 13
+        },
+        {
+          "label": "0–0,49",
+          "value": 2
+        }
+      ],
+      "grant": [
+        {
+          "label": "Да",
+          "value": 33
+        },
+        {
+          "label": "Нет",
+          "value": 25
+        }
+      ]
+    },
+    "rejected": {
+      "n": 62,
+      "city": [
+        {
+          "label": "Москва",
+          "value": 25
+        },
+        {
+          "label": "Другие",
+          "value": 19
+        },
+        {
+          "label": "Санкт-Петербург",
+          "value": 18
+        }
+      ],
+      "study_status": [
+        {
+          "label": "аспирант очной формы",
+          "value": 17
+        },
+        {
+          "label": "выпускник",
+          "value": 15
+        },
+        {
+          "label": "студент-магистрант очной формы",
+          "value": 15
+        },
+        {
+          "label": "студент-бакалавр очной формы",
+          "value": 9
+        },
+        {
+          "label": "студент ординатуры/интернатуры",
+          "value": 3
+        },
+        {
+          "label": "студент-специалист очной формы",
+          "value": 3
+        }
+      ],
+      "grad_group": [
+        {
+          "label": "2028 и позже",
+          "value": 16
+        },
+        {
+          "label": "2026",
+          "value": 16
+        },
+        {
+          "label": "2027",
+          "value": 12
+        },
+        {
+          "label": "2019 и ранее",
+          "value": 7
+        },
+        {
+          "label": "2024–2025",
+          "value": 6
+        },
+        {
+          "label": "2020–2023",
+          "value": 5
+        }
+      ],
+      "prior": [
+        {
+          "label": "Нет",
+          "value": 40
+        },
+        {
+          "label": "Да",
+          "value": 22
+        }
+      ],
+      "test_date": [
+        {
+          "label": "29 марта, воскресенье, 13:00 МСК",
+          "value": 49
+        },
+        {
+          "label": "26 марта, четверг, 20:00 МСК",
+          "value": 13
+        }
+      ],
+      "course_score": [
+        {
+          "label": "170–184",
+          "value": 47
+        },
+        {
+          "label": "185–200",
+          "value": 15
+        }
+      ],
+      "test_score": [
+        {
+          "label": "25–29",
+          "value": 37
+        },
+        {
+          "label": "20–24",
+          "value": 18
+        },
+        {
+          "label": "30–34",
+          "value": 7
+        }
+      ],
+      "interview_score": [
+        {
+          "label": "0–0,49",
+          "value": 25
+        },
+        {
+          "label": "−1–0",
+          "value": 15
+        },
+        {
+          "label": "< −1",
+          "value": 8
+        },
+        {
+          "label": "0,5–0,99",
+          "value": 8
+        },
+        {
+          "label": "1–1,49",
+          "value": 1
+        }
+      ],
+      "grant": [
+        {
+          "label": "Да",
+          "value": 38
+        },
+        {
+          "label": "Нет",
+          "value": 24
+        }
+      ]
+    }
+  },
+  "data_quality": {
+    "duplicate_application_rows": 2,
+    "duplicate_test_registration_rows": 2,
+    "application_ids_missing_from_interview_sheet_count": 1,
+    "test_result_ids_missing_from_applications_count": 18,
+    "matched_accepted_demographic_records": 58,
+    "accepted_total": 59
+  }
+}
