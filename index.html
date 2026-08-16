@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Итоги набора на программу переподготовки «Биоинформатика для биологов», 2026/27" />
-  <title>Итоги набора 2026/27 — Институт биоинформатики</title>
+  <title>Итоги набора 2026/27 — Институт биоинформатики и биостатистики</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,44 +18,43 @@
   <header class="hero">
     <div class="hero-inner">
       <div class="brand">
-        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <img src="assets/logo.png" class="brand-logo" alt="Логотип Института биоинформатики и биостатистики" />
         <div>
-          <div class="brand-name">ИНСТИТУТ БИОИНФОРМАТИКИ</div>
+          <div class="brand-name">ИНСТИТУТ БИОИНФОРМАТИКИ И БИОСТАТИСТИКИ</div>
           <div class="brand-subtitle">Набор 2026/27</div>
         </div>
       </div>
       <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow">ИТОГИ НАБОРА</p>
         <h1>Итоги набора на программу переподготовки «Биоинформатика для биологов»</h1>
-        <p class="lead">Набор 2026/27</p>
       </div>
     </div>
   </header>
 
   <main class="container">
     <section class="section" aria-labelledby="overview-title">
-      <div class="section-heading">
+      <div class="section-heading compact-heading">
         <div>
           <p class="eyebrow blue">ИТОГИ НАБОРА</p>
           <h2 id="overview-title">Основные показатели</h2>
         </div>
-        <span class="data-stamp" id="dataStamp">Загрузка данных…</span>
       </div>
 
       <div class="kpi-grid">
         <article class="kpi-card"><strong id="kpiApplications">—</strong><span>Заявок</span></article>
         <article class="kpi-card"><strong id="kpiCities">—</strong><span>Городов</span></article>
         <article class="kpi-card"><strong id="kpiPrior">—</strong><span>Поступают<br>не в первый раз</span></article>
-        <article class="kpi-card"><strong id="kpiCompetition">—</strong><span>Конкурс</span></article>
+        <article class="kpi-card highlight"><strong id="kpiCompetition">—</strong><span>человека<br>на место</span></article>
         <article class="kpi-card"><strong id="kpiCourse170">—</strong><span>Набрали 170 баллов<br>на вступительном курсе</span></article>
         <article class="kpi-card"><strong id="kpiTests">—</strong><span>Участвовали<br>в тестировании</span></article>
         <article class="kpi-card"><strong id="kpiAllowed">—</strong><span>Допущены до<br>собеседования</span></article>
       </div>
 
-      <article class="panel tall-panel">
+      <article class="panel stages-panel">
         <div class="panel-title">
           <h3>Этапы поступления</h3>
         </div>
-        <div class="chart-wrap chart-wrap-wide"><canvas id="funnelChart"></canvas></div>
+        <div id="stageFlow" class="stage-flow" aria-label="Этапы поступления"></div>
       </article>
     </section>
 
@@ -63,47 +62,49 @@
       <div class="section-heading cohort-heading">
         <div>
           <p class="eyebrow blue">АБИТУРИЕНТЫ</p>
-          <h2 id="cohort-title">Города</h2>
+          <h2 id="cohort-title">Города и профиль заявителей</h2>
         </div>
-        <div class="cohort-control">
-          <label for="cohortSelect">Собеседование</label>
-          <select id="cohortSelect">
-            <option value="all">Все</option>
-            <option value="allowed">Допуск</option>
-            <option value="not_allowed">Недопуск</option>
-          </select>
+        <div class="cohort-tools">
+          <div class="cohort-summary">Число заявителей: <strong id="cohortN">—</strong></div>
+          <div class="cohort-control">
+            <label for="cohortSelect">Собеседование</label>
+            <select id="cohortSelect">
+              <option value="all">Все</option>
+              <option value="allowed">Допуск</option>
+              <option value="not_allowed">Недопуск</option>
+            </select>
+          </div>
         </div>
       </div>
-      <div class="cohort-summary">Число заявителей: <strong id="cohortN">—</strong></div>
 
-      <article class="panel map-panel">
-        <div class="panel-title map-title-row">
-          <div>
-            <h3>Города</h3>
+      <div class="cohort-layout">
+        <article class="panel map-panel">
+          <div class="panel-title map-title-row">
+            <div><h3>Города</h3></div>
+            <div class="map-legend"><span class="legend-dot"></span> число заявителей</div>
           </div>
-          <div class="map-legend"><span class="legend-dot"></span> число заявителей</div>
-        </div>
-        <div id="cityMap" class="city-map" aria-label="Интерактивная карта городов заявителей"></div>
-      </article>
+          <div id="cityMap" class="city-map" aria-label="Интерактивная карта городов заявителей"></div>
+        </article>
 
-      <div class="grid-3 profile-grid">
-        <article class="panel">
-          <div class="panel-title"><h3>Текущий учебный статус</h3></div>
-          <div class="chart-wrap"><canvas id="studyChart"></canvas></div>
-        </article>
-        <article class="panel">
-          <div class="panel-title"><h3>Год выпуска</h3></div>
-          <div class="chart-wrap"><canvas id="gradChart"></canvas></div>
-        </article>
-        <article class="panel">
-          <div class="panel-title"><h3>Поступление</h3></div>
-          <div class="chart-wrap"><canvas id="priorChart"></canvas></div>
-        </article>
+        <div class="side-stack">
+          <article class="panel side-panel">
+            <div class="panel-title"><h3>Поступление</h3></div>
+            <div class="chart-wrap side-chart prior-chart"><canvas id="priorChart"></canvas></div>
+          </article>
+          <article class="panel side-panel">
+            <div class="panel-title"><h3>Текущий учебный статус</h3></div>
+            <div class="chart-wrap side-chart"><canvas id="studyChart"></canvas></div>
+          </article>
+          <article class="panel side-panel">
+            <div class="panel-title"><h3>Год выпуска</h3></div>
+            <div class="chart-wrap side-chart"><canvas id="gradChart"></canvas></div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="exam-title">
-      <div class="section-heading">
+    <section class="section exam-section" aria-labelledby="exam-title">
+      <div class="section-heading compact-heading">
         <div>
           <p class="eyebrow blue">ВСТУПИТЕЛЬНЫЕ ИСПЫТАНИЯ</p>
           <h2 id="exam-title">Вступительный курс и тестирование</h2>
@@ -113,16 +114,14 @@
       <article class="panel course-panel">
         <div class="panel-title">
           <h3>Вступительный курс</h3>
-          <p>Распределение итогового балла (n = <span id="courseN">—</span>).</p>
+          <p>Распределение итогового балла, n = <span id="courseN">—</span>.</p>
         </div>
         <div class="chart-wrap course-chart"><canvas id="courseChart"></canvas></div>
       </article>
 
       <article class="panel testing-panel">
         <div class="testing-header">
-          <div class="panel-title testing-title">
-            <h3>Результаты тестирования</h3>
-          </div>
+          <div class="panel-title testing-title"><h3>Результаты тестирования</h3></div>
           <div class="variant-control">
             <span class="variant-label">Вариант теста</span>
             <div class="segmented" role="group" aria-label="Вариант теста">
@@ -147,7 +146,7 @@
             </div>
             <div class="chart-wrap test-distribution"><canvas id="testScoreChart"></canvas></div>
           </div>
-          <div class="subpanel">
+          <div class="subpanel emphasis-subpanel">
             <div class="subpanel-heading">
               <h4>Правильно решенные задачи</h4>
               <span>*приведены медианные значения</span>
@@ -155,22 +154,13 @@
             <div class="chart-wrap block-chart"><canvas id="blockChart"></canvas></div>
           </div>
         </div>
-
-        <div class="block-metrics" id="blockMetrics" aria-live="polite"></div>
       </article>
-    </section>
-
-    <section class="section note-section">
-      <div class="note-card">
-        <h3>О данных</h3>
-        <p>В дашборде используются только агрегированные данные. Идентификаторы абитуриентов не публикуются.</p>
-      </div>
     </section>
   </main>
 
   <footer>
     <div class="container footer-inner">
-      <span>Институт биоинформатики · набор 2026/27</span>
+      <span>Институт биоинформатики и биостатистики · набор 2026/27</span>
       <span>Биоинформатика для биологов</span>
     </div>
   </footer>
