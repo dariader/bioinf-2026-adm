@@ -1918,10 +1918,5 @@
       "passing_score": 21
     }
   },
-  "data_quality": {
-    "duplicate_application_rows": 2,
-    "matched_accepted_demographic_records": 58,
-    "accepted_total": 59,
-    "unmapped_city_names": []
   }
 }
